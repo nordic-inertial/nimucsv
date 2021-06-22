@@ -59,32 +59,32 @@ static const message_parser_t* find_message_parser(uint32_t msg_id)
 static nimu_message_t fixpoint_parser(void* payload)
 {
     nimu_message_t message;
-	fixpoint_rate_t fpr = *((fixpoint_rate_t*)payload);
-	message.data.vector = fixpoint_rate_to_vec3f(fpr);
-	message.data.valid = true;
+    fixpoint_rate_t fpr = *((fixpoint_rate_t*)payload);
+    message.data.vector = fixpoint_rate_to_vec3f(fpr);
+    message.data.valid = true;
     return message;
 }
 
 static nimu_message_t fixpoint_with_combined_valid_flag_parser(void* payload)
 {
     nimu_message_t message;
-	fixpoint_rate_t fpr = *((fixpoint_rate_t*)payload);
-	message.data.vector = fixpoint_rate_to_vec3f(fpr);
-	message.data.valid = fpr.flag_x && fpr.flag_y && fpr.flag_z;
+    fixpoint_rate_t fpr = *((fixpoint_rate_t*)payload);
+    message.data.vector = fixpoint_rate_to_vec3f(fpr);
+    message.data.valid = fpr.flag_x && fpr.flag_y && fpr.flag_z;
     return message;
 }
 
 static nimu_message_t imu_status_parser(void* payload)
 {    
     nimu_message_t message;
-	message.status = *((msg_imu_status_t*)payload);
+    message.status = *((msg_imu_status_t*)payload);
     return message;
 }
 
 void nimulib_init(double data_rate_hz, on_block_reception_complete_callback callback)
 {
     cur_ts = 0.0;
-	ts_incr = 1.0 / data_rate_hz;
+    ts_incr = 1.0 / data_rate_hz;
     on_block_rx_complete = callback;
 }
 
@@ -94,9 +94,9 @@ bool nimulib_subscribe(uint32_t box_id, uint32_t msg_id)
     {
         return false;
     }
-	boxids[n_subs] = box_id;
-	subs[n_subs] = msg_id;
-	n_subs++;
+    boxids[n_subs] = box_id;
+    subs[n_subs] = msg_id;
+    n_subs++;
     return true;
 }
 

@@ -36,17 +36,17 @@ void block_can_deinit();
 
 // Access one of these in your application to set the interface (if necessary; they have defaults which may work)
 #ifdef SOCKETCAN
-	extern char device_name[1024];
+    extern char device_name[1024];
 #endif
 
 #ifdef PCAN
-	#include <windows.h>
-	#include "PCANBasic.h"
-	extern TPCANHandle channel;
+    #include <windows.h>
+    #include "PCANBasic.h"
+    extern TPCANHandle channel;
 #endif
 
 #ifdef KVASER
-	extern int channel;
+    extern int channel;
 #endif
 
 #ifdef __cplusplus
